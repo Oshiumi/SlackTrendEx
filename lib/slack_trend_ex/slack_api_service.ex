@@ -17,5 +17,8 @@ defmodule SlackTrendEx.SlackAPIService do
     |> Enum.filter(&(not Map.has_key?(&1, "bot_id")))
   end
 
-  def post_message(text, channel_id \\ )
+  def post_message(text, channel_id \\ Application.get_env(:slack, :post_channel)) do
+    Slack.Web.Chat.post_message(channel_id, text,
+      %{username: "slack-trend-analysis", icon_emoji: ":monolith:", link_names: 1})
+  end
 end
