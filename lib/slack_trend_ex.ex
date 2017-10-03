@@ -1,5 +1,5 @@
 defmodule SlackTrendEx do
-  def start(_type, _args) do
-
+  def run(num) do
+    SlackTrendEx.Aggregate.message_ranking(num)
   end
 end
